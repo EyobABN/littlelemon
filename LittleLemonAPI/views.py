@@ -154,7 +154,7 @@ class OrdersView(generics.ListCreateAPIView):
         is_manager = 'Manager' in groups
         is_delivery_crew = 'Delivery crew' in groups
         # Check if user is customer
-        if ((not is_manager) and (not is_delivery_crew)):
+        if not (is_manager or is_delivery_crew):
             # Create order
             order_data = {
                 'user': user.id,
