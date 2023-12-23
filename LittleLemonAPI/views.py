@@ -135,18 +135,26 @@ class OrdersView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         user = self.request.user
-        if 'Manager' in [group.name for group in user.groups.all()]:
+        groups = [group.name for group in user.groups.all()]
+        is_manager = 'Manager' in groups
+        is_delivery_crew = 'Delivery crew' in groups
+        if is_manager:
+            # Return orders belonging to all users
             return Order.objects.all()
-        elif 'Delivery crew' in [group.name for group in user.groups.all()]:
+        elif is_delivery_crew:
+            # Return orders that were assigned to delivery crew user
             return Order.objects.filter(delivery_crew=user)
         else:
+            # Return customer's own orders only
             return Order.objects.filter(user=user)
     
     def post(self, request, *args, **kwargs):
         user = self.request.user
         groups = [group.name for group in user.groups.all()]
+        is_manager = 'Manager' in groups
+        is_delivery_crew = 'Delivery crew' in groups
         # Check if user is customer
-        if (('Manager' not in groups) and ('Delivery crew' not in groups)):
+        if ((not is_manager) and (not is_delivery_crew)):
             # Create order
             order_data = {
                 'user': user.id,
