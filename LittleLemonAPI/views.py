@@ -16,8 +16,8 @@ class CategoryView(generics.ListCreateAPIView):
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-    # permission_classes = [permissions.IsAuthenticated, IsManager]
     search_fields = ['title', 'category__title']
+    ordering_fields = ['title', 'price', 'featured', 'category__title']
 
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -130,6 +130,8 @@ class CartView(generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPI
 
 class OrdersView(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
+    search_fields = ['user__username', 'delivery_crew__username']
+    ordering_fields = ['date', 'total', 'user', 'status', 'delivery_crew']
     
     def get_queryset(self):
         user = self.request.user
