@@ -1,12 +1,15 @@
 | USERNAME | EMAIL                   | PASSWORD    | GROUP            |
 |----------|-------------------------|-------------|------------------|
 | admin    | admin@little.lemon      | lemon@789   | Manager, Staff   |
+|----------|-------------------------|-------------|------------------|
 | john     | john@little.lemon       | johnPass!   | Manager          |
 | emily    | emily@little.lemon      | emilyPass!  | Manager          |
 | david    | david@little.lemon      | davidPass!  | Manager          |
+|----------|-------------------------|-------------|------------------|
 | alex     | alex@little.lemon       | alexPass!   | Delivery Crew    |
 | sarah    | sarah@little.lemon      | sarahPass!  | Delivery Crew    |
 | mike     | mike@little.lemon       | mikePass!   | Delivery Crew    |
+|----------|-------------------------|-------------|------------------|
 | mabu     | mabu@mabu.com           | mabuPass!   | Customer         |
 | eyob     | eyob@eyob.com           | eyobPass!   | Customer         |
 | dere     | dere@dere.com           | derePass!   | Customer         |
