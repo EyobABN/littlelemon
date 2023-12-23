@@ -1,0 +1,48 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore the virtual environment
+venv/
+env/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore development and local settings
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.orig
+__pycache__
+local_settings.py
+
+# Ignore user-specific environment files
+.env
+
+# Ignore IDE or text editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore pycache directories
+__pycache__/
+
+# Ignore staticfiles directory
+staticfiles/
+
+# Ignore media files
+media/
+
+# Ignore compiled translations
+locale/
+
+# Ignore secret keys or sensitive information in settings
+*.secret
