@@ -7,14 +7,14 @@ venv/
 env/
 
 # Ignore database files
-db.sqlite3
+# db.sqlite3
 
 # Ignore development and local settings
 *.pyc
 *.pyo
 *.pyd
 *.db
-*.sqlite3
+# *.sqlite3
 *.log
 *.pot
 *.pyc
