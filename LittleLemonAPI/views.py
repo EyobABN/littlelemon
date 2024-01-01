@@ -9,7 +9,7 @@ from .permissions import IsManager, IsDeliveryCrew
 from rest_framework.response import Response
 
 # Create your views here.
-class CategoryView(generics.ListCreateAPIView):
+class CategoriesView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 

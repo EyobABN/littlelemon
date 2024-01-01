@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('categories', views.CategoryView.as_view(), name='CategoryView'),
+    path('categories', views.CategoriesView.as_view(), name='CategoriesView'),
     path('menu-items', views.MenuItemsView.as_view(), name='MenuItemsView'),
     path('menu-items/<int:pk>', views.SingleMenuItemView.as_view(), name='SingleMenuItemView'),
     path('groups/manager/users', views.ManagerUsersView.as_view(), name='ManagerUsersView'),
