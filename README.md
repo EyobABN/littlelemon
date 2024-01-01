@@ -1,12 +1,12 @@
 # Django-LittleLemon-API-Advanced
-Fully functioning API project for the Little Lemon restaurant so that the client application developers can use the APIs to develop web and mobile applications. People with different roles will be able to browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders and finally deliver the orders.
+Fully functioning API project for the Little Lemon restaurant that allows client application developers to use the APIs to develop web and mobile applications. People with different roles will be able to browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders and finally deliver the orders.
 
 Groups:
-1. Manager: managers are added to this group
-2. Delivery crew: Delivery crew are added to this group
-   Registered users who are not members of either group are considered customers.
+1. `Manager` - managers are added to this group
+2. `Delivery crew` - Delivery crew are added to this group
+- Registered users who are not members of either group are considered customers.
 
-Capabilities:
+## Capabilities:
 
 1. The admin can assign users to the manager group
 2. An admin with an admin token can access the manager group
@@ -31,33 +31,33 @@ Capabilities:
 21. Customers can browse their own orders
 
 
-API Endpoints:
+## API Endpoints:
 
----User Registration and Token Generation Endpoints:
+### User Registration and Token Generation endpoints:
 
-•	/auth/users/
-•	/auth/users/me/
-•	/auth/token/login/
+* /auth/users/
+* /auth/users/me/
+* /auth/token/login/
 
----Menu Item Endpoints:
+### Menu Item endpoints:
 
-•	/api/menu-items
-•	/api/menu-items/{menuItem}
-•	/api/menu-items
-•	/api/menu-items/{menuItem}
+* /api/menu-items
+* /api/menu-items/{menuItem}
+* /api/menu-items
+* /api/menu-items/{menuItem}
 
----User group management endpoints:
+### User group management endpoints:
 
-•	/api/groups/manager/users
-•	/api/groups/manager/users/{userId}
-•	/api/groups/delivery-crew/users
-•	/api/groups/delivery-crew/users/{userId}
+* /api/groups/manager/users
+* /api/groups/manager/users/{userId}
+* /api/groups/delivery-crew/users
+* /api/groups/delivery-crew/users/{userId}
 
----Cart management endpoints:
+### Cart management endpoints:
 
-•	/api/cart/menu-items
+* /api/cart/menu-items
 
----Order management endpoints:
+### Order management endpoints:
 
-•	/api/orders
-•	/api/orders/{orderId}
+* /api/orders
+* /api/orders/{orderId}
