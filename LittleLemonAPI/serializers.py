@@ -13,7 +13,7 @@ class MenuItemSerializer(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     class Meta:
         model = MenuItem
-        fields = ['id', 'title', 'price', 'featured', 'category']
+        fields = ['id', 'title', 'price', 'featured', 'description', 'category']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

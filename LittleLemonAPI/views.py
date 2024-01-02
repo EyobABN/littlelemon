@@ -21,8 +21,8 @@ class MenuItemsView(generics.ListCreateAPIView):
 
     def get_permissions(self):
         if self.request.method == 'GET':
-            # Allow any authenticated user for GET requests
-            return [permissions.IsAuthenticated()]
+            # Allow anyone for GET requests
+            return []
         elif self.request.method == 'POST':
             # Allow only managers for POST requests
             return [permissions.IsAuthenticated(), IsManager()]
@@ -35,7 +35,7 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_permissions(self):
         if self.request.method == 'GET':
-            return [permissions.IsAuthenticated()]
+            return []
         elif self.request.method in ['PUT', 'PATCH', 'DELETE']:
             return [permissions.IsAuthenticated(), IsManager()]
         else:
