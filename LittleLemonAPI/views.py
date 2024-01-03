@@ -7,6 +7,7 @@ from .models import MenuItem, Category, Cart, Order, OrderItem
 from .serializers import MenuItemSerializer, CategorySerializer, UserSerializer, CartSerializer, OrderSerializer, OrderItemSerializer
 from .permissions import IsManager, IsDeliveryCrew
 from rest_framework.response import Response
+from .paginators import StandardResultsSetPagination
 
 # Create your views here.
 class CategoriesView(generics.ListCreateAPIView):
@@ -14,10 +15,11 @@ class CategoriesView(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
 
 class MenuItemsView(generics.ListCreateAPIView):
-    queryset = MenuItem.objects.all()
+    queryset = MenuItem.objects.all().order_by('id') # ordering is necessary for PageNumberPagination to work
     serializer_class = MenuItemSerializer
+    pagination_class = StandardResultsSetPagination
     search_fields = ['title', 'category__title']
-    ordering_fields = ['title', 'price', 'featured', 'category__title']
+    ordering_fields = ['title', 'price']
 
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -130,8 +132,9 @@ class CartView(generics.CreateAPIView, generics.ListAPIView, generics.DestroyAPI
 
 class OrdersView(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
+    pagination_class = StandardResultsSetPagination
     search_fields = ['user__username', 'delivery_crew__username']
-    ordering_fields = ['date', 'total', 'user', 'status', 'delivery_crew']
+    ordering_fields = ['date', 'total']
     
     def get_queryset(self):
         user = self.request.user
