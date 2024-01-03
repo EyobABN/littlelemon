@@ -152,7 +152,7 @@ The `/api/menu-items` and `/api/orders` endpoints support searching in the follo
 - `user__username`: Search by the username of the user who placed the order.
 - `delivery_crew__username`: Search by the username of the delivery crew responsible for the order.
 
-To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Burger" in their title, use:
+To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Pasta" in their title, use:
 
 ```plaintext
 /api/menu-items?search=pasta
