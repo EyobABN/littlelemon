@@ -155,7 +155,7 @@ The `/api/menu-items` and `/api/orders` endpoints support searching in the follo
 To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Burger" in their title, use:
 
 ```plaintext
-/api/menu-items?search=Pasta
+/api/menu-items?search=pasta
 ```
 
 ## Pagination
@@ -164,22 +164,14 @@ The `/api/menu-items` and `/api/orders` endpoints also support pagination. Users
 /api/menu-items?page=2&page_size=5
 ```
 
+## Throttling
+A limit has been set on the number of requests that can be made to the API in a given time span.
+
 ## UI Endpoints
 
-### Homepage:
-
-* /
-
-### About page:
-
-* /about
-
-### Menu page:
-
-* /menu
-
-### Book page:
-
-* /book/
+* / - homepage
+* /about - Information about the Little Lemon restaurant
+* /menu - Displays the menu items currently available
+* /book/ - Allows customers to make a reservation at the restaurant
 
 
