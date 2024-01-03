@@ -144,13 +144,13 @@ The `/api/menu-items` and `/api/orders` endpoints support searching in the follo
 
 #### Menu Items Search Fields:
 
-- `title`: Search by the name of the menu item.
-- `category__title`: Search by the name of the category ('main', 'appetizer', 'dessert') to which the menu item belongs.
+- `title`: search by the name of the menu item
+- `category__title`: search by the name of the category ('main', 'appetizer', 'dessert') to which the menu item belongs
 
 #### Orders Search Fields:
 
-- `user__username`: Search by the username of the user who placed the order.
-- `delivery_crew__username`: Search by the username of the delivery crew responsible for the order.
+- `user__username`: search by the username of the user who placed the order
+- `delivery_crew__username`: search by the username of the delivery crew responsible for the order
 
 To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Pasta" in their title, use:
 
