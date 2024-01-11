@@ -1,4 +1,4 @@
-# Django-LittleLemon-API-Advanced
+# Django-LittleLemon-API
 Fully functional RESTful API project for the Little Lemon restaurant. Client application developers can use the APIs to develop web and mobile applications. Authentication, authorization, ordering, searching, pagination and throttling implemented. People with different roles will be able to browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders and finally deliver the orders. The `restaurant` app within the django project is a simple UI interface implemented using Django templates.
 
 ## Getting Started
