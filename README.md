@@ -175,7 +175,9 @@ A limit has been set on the number of requests that can be made to the API in a 
 
 ## UI Endpoints
 
-* / - homepage
-* /about - Information about the Little Lemon restaurant
-* /menu - Displays the menu items currently available
-* /book/ - Allows customers to make a reservation at the restaurant
+| Endpoint | Purpose |
+|----------|---------|
+| / | homepage |
+| /about | Information about the Little Lemon restaurant |
+| /menu | Displays the menu items currently available |
+| /book/ | Allows customers to make a reservation at the restaurant |
