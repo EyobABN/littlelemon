@@ -1,7 +1,16 @@
 # Django-LittleLemon-API
+
+## Table of Contents
+* [Introduction](#introduction)
+* [Installation and Usage](#installation)
+* [Features](#features)
+* [API Endpoints](#api)
+* [UI Endpoints](#ui)
+
+## Introduction <!-- {#introduction} -->
 Fully functional RESTful API project for the Little Lemon restaurant. Client application developers can use the APIs to develop web and mobile applications. Authentication, authorization, ordering, searching, pagination and throttling implemented. People with different roles will be able to browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders and finally deliver the orders. The `restaurant` app within the django project is a simple UI interface implemented using Django templates.
 
-## Getting Started
+## Installation and Usage  <!-- {#installation} -->
 
 #### Clone the Repository
 ```bash
@@ -32,37 +41,88 @@ python manage.py runserver
 #### Access the Application
 Open your browser and go to http://127.0.0.1:8000
 
-## User Groups:
+
+## Features <!-- {#features} -->
+
+### User Groups:
 1. `Manager` - managers are added to this group
 2. `Delivery crew` - Delivery crew are added to this group
 - Registered users who are not members of either group are considered customers.
 
-## Features:
+### Supported Operations
+* The admin can assign users to the manager group
+* An admin with an admin token can access the manager group
+* The admin can add menu items
+* The admin can add categories
+* Managers can log in
+* Managers can update the item of the day
+* Managers can assign users to the delivery crew
+* Managers can assign orders to the delivery crew
+* The delivery crew can access orders assigned to them
+* The delivery crew can update an order as delivered
+* Customers can register
+* Customers can log in using their username and password and get access tokens
+* Customers can browse all categories 
+* Customers can browse all the menu items at once
+* Customers can browse menu items by category
+* Customers can paginate menu items
+* Customers can sort menu items by price
+* Customers can add menu items to the cart
+* Customers can access previously added items in the cart
+* Customers can place orders
+* Customers can browse their own orders
 
-1. The admin can assign users to the manager group
-2. An admin with an admin token can access the manager group
-3. The admin can add menu items
-4. The admin can add categories
-5. Managers can log in
-6. Managers can update the item of the day
-7. Managers can assign users to the delivery crew
-8. Managers can assign orders to the delivery crew
-9. The delivery crew can access orders assigned to them
-10. The delivery crew can update an order as delivered
-11. Customers can register
-12. Customers can log in using their username and password and get access tokens
-13. Customers can browse all categories 
-14. Customers can browse all the menu items at once
-15. Customers can browse menu items by category
-16. Customers can paginate menu items
-17. Customers can sort menu items by price
-18. Customers can add menu items to the cart
-19. Customers can access previously added items in the cart
-20. Customers can place orders
-21. Customers can browse their own orders
+### Ordering
+
+* The `/api/menu-items` and `/api/orders` endpoints support ordering by the following fields:
+
+#### Menu Items ordering fields:
+- `title`: order alphabetically by the name of the menu item
+- `price`: order numerically by the price of the menu item
+
+#### Orders ordering fields:
+- `date`: order by date the order was made on
+- `total`: order by the total price of the order
+  
+To specify the order in which the responses should be presented, one or more of these fields can be included in the `ordering` query parameter.
+
+To sort in ascending order, include the desired fields directly. To sort in descending order, prepend the field with `-`. For instance, to order menu items by category in ascending order and then by price in descending order, use the following query:
+
+```plaintext
+/api/menu-items?ordering=category,-price
+```
+
+### Searching
+
+The `/api/menu-items` and `/api/orders` endpoints support searching in the following fields:
+
+#### Menu Items Search Fields:
+
+- `title`: search by the name of the menu item
+- `category__title`: search by the name of the category ('main', 'appetizer', 'dessert') to which the menu item belongs
+
+#### Orders Search Fields:
+
+- `user__username`: search by the username of the user who placed the order
+- `delivery_crew__username`: search by the username of the delivery crew responsible for the order
+
+To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Pasta" in their title, use:
+
+```plaintext
+/api/menu-items?search=pasta
+```
+
+### Pagination
+The `/api/menu-items` and `/api/orders` endpoints also support pagination. Users can specify the number of items that should be included per page by setting the `page_size` query parameter, while `page` is used to specify which page to return. For example, to receive page number 2 at 5 menu items per page, the following query can be used:
+```plaintext
+/api/menu-items?page=2&page_size=5
+```
+
+### Throttling
+A limit has been set on the number of requests that can be made to the API in a given time span.
 
 
-## API Endpoints
+## API Endpoints <!-- {#api} -->
 
 ### User Registration and Token Generation endpoints:
 
@@ -118,60 +178,11 @@ Open your browser and go to http://127.0.0.1:8000
 | /api/orders | Delivery crew | `GET` | Returns all orders with assigned to this delivery crew member |
 | /api/orders/{orderId} | Delivery crew | `PATCH` | A delivery crew can use this endpoint to update the order status to 0 or 1. The delivery crew is not able to update anything else in this order. |
 
-## Ordering
 
-The `/api/menu-items` and `/api/orders` endpoints support ordering by the following fields:
 
-#### Menu Items ordering fields:
-- `title`: order alphabetically by the name of the menu item
-- `price`: order numerically by the price of the menu item
-
-#### Orders ordering fields:
-- `date`: order by date the order was made on
-- `total`: order by the total price of the order
-  
-To specify the order in which the responses should be presented, one or more of these fields can be included in the `ordering` query parameter.
-
-To sort in ascending order, include the desired fields directly. To sort in descending order, prepend the field with `-`. For instance, to order menu items by category in ascending order and then by price in descending order, use the following query:
-
-```plaintext
-/api/menu-items?ordering=category,-price
-```
-
-## Searching
-
-The `/api/menu-items` and `/api/orders` endpoints support searching in the following fields:
-
-#### Menu Items Search Fields:
-
-- `title`: search by the name of the menu item
-- `category__title`: search by the name of the category ('main', 'appetizer', 'dessert') to which the menu item belongs
-
-#### Orders Search Fields:
-
-- `user__username`: search by the username of the user who placed the order
-- `delivery_crew__username`: search by the username of the delivery crew responsible for the order
-
-To perform a search, use the `search` query parameter in the API request. For example, to find menu items with the word "Pasta" in their title, use:
-
-```plaintext
-/api/menu-items?search=pasta
-```
-
-## Pagination
-The `/api/menu-items` and `/api/orders` endpoints also support pagination. Users can specify the number of items that should be included per page by setting the `page_size` query parameter, while `page` is used to specify which page to return. For example, to receive page number 2 at 5 menu items per page, the following query can be used:
-```plaintext
-/api/menu-items?page=2&page_size=5
-```
-
-## Throttling
-A limit has been set on the number of requests that can be made to the API in a given time span.
-
-## UI Endpoints
+## UI Endpoints <!-- {#ui} -->
 
 * / - homepage
 * /about - Information about the Little Lemon restaurant
 * /menu - Displays the menu items currently available
 * /book/ - Allows customers to make a reservation at the restaurant
-
-
