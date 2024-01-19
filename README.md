@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Fully functional RESTful API project for the Little Lemon restaurant. Client application developers can use the APIs to develop web and mobile applications. Authentication, authorization, ordering, searching, pagination and throttling have been implemented. People with different roles can browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders, and deliver orders. The `restaurant` app is a simple frontend implemented using Django templates.
+Fully functional RESTful API for the Little Lemon restaurant. Client application developers can use the APIs to develop web and mobile applications. Authentication, authorization, ordering, searching, pagination and throttling have been implemented. People with different roles can browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders, and deliver orders. The `restaurant` app is a simple frontend implemented using Django templates.
 
 ## Installation and Usage
 
@@ -46,7 +46,7 @@ Fully functional RESTful API project for the Little Lemon restaurant. Client app
 ### User Groups
 
 1. `Manager` - managers are added to this group
-2. `Delivery crew` - Delivery crew are added to this group  
+2. `Delivery crew` - delivery crew are added to this group  
 Registered users who are not members of either group are considered customers.
 
 ### Supported Operations
